@@ -1,14 +1,14 @@
 -- This query does the Incremental Load - one year at a time.
 -- Insert data into the 'actors_history_scd' table
-INSERT INTO shashankkongara.actors_history_scd
+INSERT INTO actors_history_scd
 WITH 
     -- Retrieve existing records from actors history table
     old_scd AS (
-        SELECT * FROM shashankkongara.actors_history_scd
+        SELECT * FROM actors_history_scd
     ),
     -- Fetch current year data for actors from the actors table
     current_year AS (
-        SELECT * FROM shashankkongara.actors WHERE current_year = 2016
+        SELECT * FROM actors WHERE current_year = 2016
     ),
     -- Combine previous and current year data to identify changes
     combined AS (
@@ -59,7 +59,7 @@ WITH
     ),
     -- Fetch the maximum current year from the actors table
     max_year AS (
-        SELECT MAX(current_year) as current_year FROM shashankkongara.actors
+        SELECT MAX(current_year) as current_year FROM actors
     )
 -- Select all final results and cross join with the max year to include the most recent year in the output
 SELECT
