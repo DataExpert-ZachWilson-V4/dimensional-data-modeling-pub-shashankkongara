@@ -1,5 +1,5 @@
 -- Creating Type 2 Slowly Changing Dimension Table - 'actors_history_scd' table
-CREATE OR REPLACE TABLE shashankkongara.actors_history_scd(
+CREATE OR REPLACE TABLE actors_history_scd(
     actor VARCHAR,           -- Column to store actor name
     quality_class VARCHAR,   -- Column to specify categorical rating based on average rating in the most recent year
     is_active BOOLEAN,       -- Boolean column to indicate if the actor is currently active in making films in current year
