@@ -1,7 +1,7 @@
 -- This query does `backfill` of inserting data into SCD table for all the years at once.
 -- Inserting data into the 'actors_history_scd' table
 
-INSERT INTO shashankkongara.actors_history_scd
+INSERT INTO actors_history_scd
 WITH
     -- Calculate values and their lag from the previous year for comparison
     lagged AS (
@@ -16,7 +16,7 @@ WITH
             lag(quality_class, 1) OVER (PARTITION BY actor ORDER BY current_year) AS quality_class_last_year,
             current_year
         FROM
-            shashankkongara.actors
+            actors
     ),
     -- Compute a streak_identifier to track changes and continuity in actor activity over years
     streaked AS (
@@ -53,7 +53,7 @@ WITH
     ),
     -- Fetch the maximum current year from the actors table
     max_year AS (
-        SELECT MAX(current_year) as current_year FROM shashankkongara.actors
+        SELECT MAX(current_year) as current_year FROM actors
     )
 -- Select all final results and cross join with the max year to include the most recent year in the output
 SELECT
