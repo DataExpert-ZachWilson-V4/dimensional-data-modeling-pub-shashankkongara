@@ -1,6 +1,6 @@
 -- This query populates data for 'actors' table for one year at a time.
 -- Inserting data into the 'actors' table
-INSERT INTO shashankkongara.actors
+INSERT INTO actors
 -- Subquery to get last year's data for actors
 WITH last_year_data AS (
     SELECT
@@ -11,7 +11,7 @@ WITH last_year_data AS (
         is_active,
         current_year
     FROM
-        shashankkongara.actors
+        actors
     WHERE
         current_year = 2016
 ),
