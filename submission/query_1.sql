@@ -1,5 +1,5 @@
 -- Creating the 'actors' table with a cumulative table design
-CREATE OR REPLACE TABLE shashankkongara.actors(
+CREATE OR REPLACE TABLE actors(
     actor VARCHAR, -- Column to store the actor's name
     actor_id VARCHAR, -- Column to store a unique identifier for the actor
     films ARRAY( -- Array of ROWs to store multiple films per actor - to track the history.
